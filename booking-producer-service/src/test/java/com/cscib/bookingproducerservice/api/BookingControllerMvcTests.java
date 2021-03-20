@@ -1,6 +1,6 @@
-package com.cscib.bookingcommon.bookingproducerservice.api;
+package com.cscib.bookingproducerservice.api;
 
-import com.cscib.bookingcommon.bookingproducerservice.service.BookingService;
+import com.cscib.bookingproducerservice.service.BookingService;
 import com.cscib.bookingcommon.dto.BookingDTO;
 import com.cscib.bookingcommon.dto.TripWaypointDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,10 +24,8 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
 @RunWith(SpringRunner.class)

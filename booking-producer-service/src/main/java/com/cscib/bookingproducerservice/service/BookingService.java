@@ -1,4 +1,4 @@
-package com.cscib.bookingcommon.bookingproducerservice.service;
+package com.cscib.bookingproducerservice.service;
 
 import com.cscib.bookingcommon.dto.BookingDTO;
 import org.springframework.stereotype.Component;

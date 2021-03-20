@@ -1,4 +1,4 @@
-package com.cscib.bookingcommon.bookingproducerservice.api;
+package com.cscib.bookingproducerservice.api;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;

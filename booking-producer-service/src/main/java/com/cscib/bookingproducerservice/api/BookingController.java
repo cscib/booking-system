@@ -1,7 +1,7 @@
-package com.cscib.bookingcommon.bookingproducerservice.api;
+package com.cscib.bookingproducerservice.api;
 
 import com.cscib.bookingcommon.dto.BookingDTO;
-import com.cscib.bookingcommon.bookingproducerservice.service.BookingService;
+import com.cscib.bookingproducerservice.service.BookingService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
