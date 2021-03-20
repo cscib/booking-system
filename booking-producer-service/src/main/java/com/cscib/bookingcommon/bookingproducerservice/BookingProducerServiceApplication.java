@@ -1,13 +1,13 @@
-package com.cscib.bookingconsumerservice;
+package com.cscib.bookingcommon.bookingproducerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BookingConsumerServiceApplication {
+public class BookingProducerServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookingConsumerServiceApplication.class, args);
+		SpringApplication.run(BookingProducerServiceApplication.class, args);
 	}
 
 }

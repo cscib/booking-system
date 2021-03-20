@@ -1,13 +1,13 @@
-package com.cscib.bookingdispatcherservice;
+package com.cscib.bookingcommon.bookingauditservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BookingDispatcherServiceApplication {
+public class BookingAuditServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookingDispatcherServiceApplication.class, args);
+		SpringApplication.run(BookingAuditServiceApplication.class, args);
 	}
 
 }

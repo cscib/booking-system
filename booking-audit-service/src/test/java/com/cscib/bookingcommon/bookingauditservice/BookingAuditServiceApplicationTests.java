@@ -1,10 +1,10 @@
-package com.cscib.bookingconsumerservice;
+package com.cscib.bookingcommon.bookingauditservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BookingConsumerServiceApplicationTests {
+class BookingAuditServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

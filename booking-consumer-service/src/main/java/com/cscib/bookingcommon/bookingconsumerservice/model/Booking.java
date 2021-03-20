@@ -1,4 +1,4 @@
-package com.cscib.bookingconsumerservice.model;
+package com.cscib.bookingcommon.bookingconsumerservice.model;
 
 import lombok.*;
 

@@ -1,7 +1,6 @@
-package com.cscib.bookingconsumerservice.model;
+package com.cscib.bookingcommon.bookingconsumerservice.model;
 
 import lombok.*;
-import org.springframework.data.geo.Point;
 
 import javax.persistence.*;
 
