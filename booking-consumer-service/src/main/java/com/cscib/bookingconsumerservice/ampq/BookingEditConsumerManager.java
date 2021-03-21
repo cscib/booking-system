@@ -17,6 +17,12 @@ public class BookingEditConsumerManager  extends AbstractBookingConsumerManager 
     @Value("${rabbitmq.bookingEditQueueName}")
     private String bookingEditQueueName;
 
+    protected static final ThreadLocal<String> QueueName = new ThreadLocal<String>();
+
+    protected static void setQueueName(String name) {
+        QueueName.set(name);
+    }
+
     public static String getQueueName() {
         return QueueName.get();
     }

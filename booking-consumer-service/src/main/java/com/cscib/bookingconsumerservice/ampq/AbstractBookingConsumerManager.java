@@ -21,13 +21,6 @@ public class AbstractBookingConsumerManager {
     @Autowired
     private BookingConsumerService bookingConsumerService;
 
-
-    protected static final ThreadLocal<String> QueueName = new ThreadLocal<String>();
-
-    protected static void setQueueName(String name) {
-        QueueName.set(name);
-    }
-
     protected void process(Message message, String queueOperation) {
         log.info("[{}] {}",  message.getMessageProperties().getConsumerQueue(),
                 new String(message.getBody()));
@@ -90,7 +83,7 @@ public class AbstractBookingConsumerManager {
                 case DELETE: bookingConsumerService.deleteBooking(booking.getBookingID()); break;
             }
         } catch (BookingConsumerException e) {
-            log.error("[{} - {}] Message arrived to the wrong ADD queue", booking.getBookingID(), booking.getOperation() );
+            log.error("[{} - {}] Message arrived to the wrong {} queue", booking.getBookingID(), booking.getOperation(), queueOperation);
         } catch (Exception e) {
             log.error("An error occured while trying to do Operation {} on Booking ID {}", queueOperation,
                     booking != null && booking.getBookingID() != null ? booking.getBookingID() : "Undefined");

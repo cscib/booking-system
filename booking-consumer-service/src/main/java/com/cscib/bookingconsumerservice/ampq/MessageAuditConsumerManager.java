@@ -16,6 +16,12 @@ public class MessageAuditConsumerManager extends AbstractBookingConsumerManager 
     @Value("${rabbitmq.messageAuditQueueName}")
     private String messageAuditQueueName;
 
+    protected static final ThreadLocal<String> QueueName = new ThreadLocal<String>();
+
+    protected static void setQueueName(String name) {
+        QueueName.set(name);
+    }
+
     public static String getQueueName() {
         return QueueName.get();
     }

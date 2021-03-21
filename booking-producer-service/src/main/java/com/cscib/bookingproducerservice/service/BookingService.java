@@ -32,7 +32,7 @@ public class BookingService {
 
     public void deleteBooking(String bookingId) {
         bookingProducerManager.sendToMessageExchange(BookingMessageDTO.builder()
-                .operation(BookingOperationsEnum.EDIT.name())
+                .operation(BookingOperationsEnum.DELETE.name())
                 .bookingID(bookingId)
                 .bookingDTO(BookingDTO.builder().build())
                 .build());
