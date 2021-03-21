@@ -17,6 +17,7 @@
 	<modules>
 		<module>booking-consumer-service</module>
 		<module>booking-producer-service</module>
+		<module>booking-common</module>
 	</modules>
 
 	<description>Booking System Parent POM</description>

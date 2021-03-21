@@ -23,10 +23,10 @@ import java.util.concurrent.Future;
 public class BookingProducerManager {
 
 
-    @Value("rabbitmq.messageExchangeName")
+    @Value("${rabbitmq.messageExchangeName}")
     private String messageExchangeName;
 
-    @Value("rabbitmq.bookingExchangeName")
+    @Value("${rabbitmq.bookingExchangeName}")
     private String bookingExchangeName;
 
     @Autowired

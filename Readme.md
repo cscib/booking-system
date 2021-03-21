@@ -17,7 +17,7 @@
 gradle build && docker build -t java-app/latest .
 
 
-sudo docker run -d --hostname my-rabbit --name some-rabbit -p 7777:15672 -p 5672:5672 -p 15674:15674 myrabbitmqimage:v1
+sudo docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_VHOST=/ -p 15672:15672 -p 5672:5672 -p 15674:15674 myrabbitmqimage:v1
 
 ## Additional Checks
 -----------------
@@ -27,6 +27,5 @@ docker ps -a
 
 ## Booking API
 
- - `POST    /v1/movie/create`
- - `GET     /v1//movie/all`
- - `GET     /v1//movie/{movieId}`
+ - `POST    /v1/booking/create`
+

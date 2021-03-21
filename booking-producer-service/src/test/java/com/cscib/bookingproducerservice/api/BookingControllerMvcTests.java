@@ -47,6 +47,12 @@ public class BookingControllerMvcTests extends AbstractControllerTest {
     private String mockBookingJson = mapToJson(mockBookingDTO);
 
     public BookingControllerMvcTests() throws JsonProcessingException {
+        log.info(mockBookingJson);
+    }
+
+    @Test
+    void test(){
+        log.info(mockBookingJson);
     }
 
 //    String mockBookingJson = "{\"id\":\"Booking1\",\"passengerName\":\"John Grisham\"," +

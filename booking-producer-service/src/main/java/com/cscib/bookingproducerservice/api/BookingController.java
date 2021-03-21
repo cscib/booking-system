@@ -29,11 +29,9 @@ public class BookingController {
     }
 
     @SneakyThrows
-    @PostMapping(value = "/v1/booking/{bookingId}/delete", consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = "application/json")
-    public void deleteBooking(@RequestBody String bookingId) {
+    @DeleteMapping(value = "/v1/booking/{bookingId}/delete")
+    public void deleteBooking(@PathVariable String bookingId) {
         bookingService.deleteBooking(bookingId);
     }
-
 
 }

@@ -41,10 +41,10 @@ public class RabbitConfig {
 
     @Bean
     public Declarables bookingExchangeBindings() {
-        Queue messageAuditQueue = new Queue(messageAuditQueueName, false);
-        Queue bookingAddQueue = new Queue(bookingAddQueueName, false);
-        Queue bookingEditQueue = new Queue(bookingEditQueueName, false);
-        Queue bookingDeleteQueue = new Queue(bookingDeleteQueueName, false);
+        Queue messageAuditQueue = new Queue(messageAuditQueueName, isNonDurable);
+        Queue bookingAddQueue = new Queue(bookingAddQueueName, isNonDurable);
+        Queue bookingEditQueue = new Queue(bookingEditQueueName, isNonDurable);
+        Queue bookingDeleteQueue = new Queue(bookingDeleteQueueName, isNonDurable);
         TopicExchange bookingExchange = new TopicExchange(bookingExchangeName,  isNonDurable, false);
         FanoutExchange messageExchange = new FanoutExchange(messageExchangeName);
 
@@ -62,15 +62,15 @@ public class RabbitConfig {
                 BindingBuilder
                         .bind(bookingAddQueue)
                         .to(bookingExchange)
-                        .with("*"+BookingOperationsEnum.ADD.name()+"*"),
+                        .with("#" + BookingOperationsEnum.ADD.name().toLowerCase() + "#"),
                 BindingBuilder
                         .bind(bookingEditQueue)
                         .to(bookingExchange)
-                        .with("*"+BookingOperationsEnum.EDIT.name()+"*"),
+                        .with("#" + BookingOperationsEnum.EDIT.name().toLowerCase() + "#"),
                 BindingBuilder
                         .bind(bookingDeleteQueue)
                         .to(bookingExchange)
-                        .with("*"+BookingOperationsEnum.DELETE.name()+"*"));
+                        .with("#" + BookingOperationsEnum.DELETE.name().toLowerCase() + "#"));
     }
 
 
