@@ -56,23 +56,23 @@ public class BookingControllerMvcTests extends AbstractControllerTest {
 //            "\"tripWaypoints\":[\"\"]}";
 
 
-    @Test
-    void getBooking() throws Exception {
-        Mockito.when(
-                bookingService.getBooking(Mockito.anyString())).thenReturn(mockBookingDTO);
-
-        MvcResult result = mvc.perform(MockMvcRequestBuilders
-                .post("/v1/booking/{bookingId}","Booking1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(mockBookingJson))
-                //.andExpect(status().isOk())
-                .andDo(MockMvcResultHandlers.print())
-                .andReturn();
-
-
-        log.info("Test getBooking result - {}.",result.getResponse());
-
-       // JSONAssert.assertEquals(mockBookingJson, mapToJson(result.getResponse()), false);
-    }
+//    @Test
+//    void getBooking() throws Exception {
+//        Mockito.when(
+//                bookingService.getBooking(Mockito.anyString())).thenReturn(mockBookingDTO);
+//
+//        MvcResult result = mvc.perform(MockMvcRequestBuilders
+//                .post("/v1/booking/{bookingId}","Booking1")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(mockBookingJson))
+//                //.andExpect(status().isOk())
+//                .andDo(MockMvcResultHandlers.print())
+//                .andReturn();
+//
+//
+//        log.info("Test getBooking result - {}.",result.getResponse());
+//
+//       // JSONAssert.assertEquals(mockBookingJson, mapToJson(result.getResponse()), false);
+//    }
 
 }

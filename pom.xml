@@ -15,9 +15,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>booking-audit-service</module>
 		<module>booking-consumer-service</module>
-		<module>booking-dispatcher-service</module>
 		<module>booking-producer-service</module>
 	</modules>
 

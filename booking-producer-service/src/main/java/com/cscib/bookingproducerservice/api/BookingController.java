@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 public class BookingController {
@@ -29,14 +28,12 @@ public class BookingController {
         bookingService.updateBooking(booking);
     }
 
-    @GetMapping("/v1/booking/{bookingId}")
-    BookingDTO getBooking(@PathVariable String bookingId) {
-        return bookingService.getBooking(bookingId);
+    @SneakyThrows
+    @PostMapping(value = "/v1/booking/{bookingId}/delete", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = "application/json")
+    public void deleteBooking(@RequestBody String bookingId) {
+        bookingService.deleteBooking(bookingId);
     }
 
-    @GetMapping("/v1/booking/all")
-    List<BookingDTO> getBookings() {
-        return bookingService.getBookings();
-    }
 
 }
