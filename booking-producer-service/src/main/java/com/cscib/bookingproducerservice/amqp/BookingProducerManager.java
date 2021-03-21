@@ -41,7 +41,7 @@ public class BookingProducerManager {
         log.info("[{} - {}] Sending message to Message Exchange.", message.getBookingID(), message.getOperation());
 
         try {
-            rabbitTemplate.convertAndSend(messageExchangeName, buildMessage(message));
+            rabbitTemplate.convertAndSend(messageExchangeName, message.getOperation().toLowerCase(), buildMessage(message));
             //rabbitTemplate.convertAndSend(bookingExchangeName, message.getOperation(), buildMessage(message));
         } catch (JsonProcessingException e) {
             log.error("Error sending queue for booking {} with message.", message.getBookingID());
