@@ -72,8 +72,8 @@ public class AbstractBookingConsumerManager {
         } catch (BookingConsumerException e) {
             log.error("[{} - {}] Message arrived to the wrong {} queue", booking.getBookingID(), booking.getOperation(), queueOperation);
         } catch (Exception e) {
-            log.error("An error occured while trying to do Operation {} on Booking ID {}", queueOperation,
-                    booking != null && booking.getBookingID() != null ? booking.getBookingID() : "Undefined");
+            log.error("An error occured while trying to do Operation {} on Booking ID {} : ", queueOperation,
+                    booking != null && booking.getBookingID() != null ? booking.getBookingID() : "Undefined", e);
         }
     }
 }

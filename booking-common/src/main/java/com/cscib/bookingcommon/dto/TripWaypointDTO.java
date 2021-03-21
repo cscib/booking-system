@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class TripWaypointDTO {
 
-    private int id;
+    private String id;
 
     private String locality;
 
