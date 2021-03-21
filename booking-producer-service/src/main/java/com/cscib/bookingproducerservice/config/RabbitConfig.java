@@ -18,8 +18,8 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitConfig {
 
 
-    @Value("${rabbitmq.queueNonDurable}")
-    private boolean isNonDurable;
+    @Value("${rabbitmq.queueIsDurable}")
+    private boolean isDurable;
 
     @Value("${rabbitmq.messageExchangeName}")
     private String messageExchangeName;
@@ -41,12 +41,22 @@ public class RabbitConfig {
 
     @Bean
     public Declarables bookingExchangeBindings() {
-        Queue messageAuditQueue = new Queue(messageAuditQueueName, isNonDurable);
-        Queue bookingAddQueue = new Queue(bookingAddQueueName, isNonDurable);
-        Queue bookingEditQueue = new Queue(bookingEditQueueName, isNonDurable);
-        Queue bookingDeleteQueue = new Queue(bookingDeleteQueueName, isNonDurable);
-        TopicExchange bookingExchange = new TopicExchange(bookingExchangeName,  isNonDurable, false);
+        Queue messageAuditQueue = new Queue(messageAuditQueueName, isDurable);
+        Queue bookingAddQueue = new Queue(bookingAddQueueName, isDurable);
+        Queue bookingEditQueue = new Queue(bookingEditQueueName, isDurable);
+        Queue bookingDeleteQueue = new Queue(bookingDeleteQueueName, isDurable);
+        TopicExchange bookingExchange = new TopicExchange(bookingExchangeName,  isDurable, false);
         FanoutExchange messageExchange = new FanoutExchange(messageExchangeName);
+
+        String addRKey = "*." + BookingOperationsEnum.ADD.name().toLowerCase() + ".*";
+        String editRKey = "*." + BookingOperationsEnum.EDIT.name().toLowerCase() + ".*";
+        String deleteRKey = "*." + BookingOperationsEnum.DELETE.name().toLowerCase() + ".*";
+
+        log.info("Binding {} to {}", messageAuditQueue,messageExchange);
+        log.info("Binding {} to {}", bookingExchange,messageExchange);
+        log.info("Binding {} to {} with Routing Key {}", bookingAddQueue,bookingExchange, addRKey);
+        log.info("Binding {} to {} with Routing Key {}", bookingEditQueue,bookingExchange, editRKey);
+        log.info("Binding {} to {} with Routing Key {}", bookingDeleteQueue,bookingExchange, deleteRKey);
 
         return new Declarables(
                 messageAuditQueue,
@@ -58,19 +68,22 @@ public class RabbitConfig {
                 BindingBuilder
                         .bind(messageAuditQueue)
                         .to(messageExchange),
-                BindingBuilder.bind(bookingExchange).to(messageExchange),
+                BindingBuilder
+                        .bind(bookingExchange)
+                        .to(messageExchange),
                 BindingBuilder
                         .bind(bookingAddQueue)
                         .to(bookingExchange)
-                        .with("#" + BookingOperationsEnum.ADD.name().toLowerCase() + "#"),
+                        .with(addRKey),
                 BindingBuilder
                         .bind(bookingEditQueue)
                         .to(bookingExchange)
-                        .with("#" + BookingOperationsEnum.EDIT.name().toLowerCase() + "#"),
+                        .with(editRKey),
                 BindingBuilder
                         .bind(bookingDeleteQueue)
                         .to(bookingExchange)
-                        .with("#" + BookingOperationsEnum.DELETE.name().toLowerCase() + "#"));
+                        .with(deleteRKey));
+
     }
 
 

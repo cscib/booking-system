@@ -29,3 +29,5 @@ docker ps -a
 
  - `POST    /v1/booking/create`
 
+ {"id":"Booking1","passengerName":"John Grisham","passengerContactNumber":"+044 12345678","pickupTime":"","asap":true,"waitingTime":null,"numberOfPassengers":2,"price":10,"rating":0,"createdOn":"","lastModifiedOn":"","tripWaypoints":[{"id":0,"locality":null,"latitude":0.0,"longitude":0.0},{"id":0,"locality":null,"latitude":0.0,"longitude":0.0}]}
+

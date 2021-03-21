@@ -41,7 +41,7 @@ public class AbstractBookingConsumerManager {
 
 
                 Optional.of(booking)
-                        .filter(b -> b.getOperation().equals("AUDIT"))
+                        .filter(b -> queueOperation.equals("AUDIT"))
                         .ifPresentOrElse(this::processAudit,
                                 ()->processBooking(queueOperation,booking));
 

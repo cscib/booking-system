@@ -30,6 +30,7 @@ public class BookingEditConsumerManager  extends AbstractBookingConsumerManager 
     @PostConstruct
     private void initialize(){
         BookingEditConsumerManager.setQueueName(bookingEditQueueName);
+        log.info("Initializing Listener for EDIT Operation with Routing Key {} ", getQueueName());
     }
 
 
