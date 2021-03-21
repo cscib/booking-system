@@ -30,16 +30,6 @@ public class AbstractBookingConsumerManager {
             booking = objectMapper.readValue(message.getBody(), BookingMessageDTO.class);
 
             try {
-//                Optional.of(queueOperation)
-//                        .filter(q -> q.equals("AUDIT"))
-//                        .ifPresent(q->processAudit(q, booking));
-
-//                Optional.of(queueOperation)
-//                        .filter(q -> q.equals("AUDIT"))
-//                        .ifPresentOrElse(this::processAudit,
-//                                ()->processBooking(queueOperation,booking));
-
-
                 Optional.of(booking)
                         .filter(b -> queueOperation.equals("AUDIT"))
                         .ifPresentOrElse(this::processAudit,
@@ -57,10 +47,7 @@ public class AbstractBookingConsumerManager {
             log.error("[IOException when reading message from {}] {}",  message.getMessageProperties().getConsumerQueue(),
                     e.getCause());
         }
-
     }
-
-
 
     private void processAudit(BookingMessageDTO booking) {
         try {

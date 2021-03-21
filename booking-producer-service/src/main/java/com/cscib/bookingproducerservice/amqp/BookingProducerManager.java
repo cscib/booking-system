@@ -16,6 +16,11 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.Future;
 
 
@@ -81,19 +86,17 @@ public class BookingProducerManager {
 
      private String getRoutingKey(String operation) throws BookingProducerException {
 
-        String routingKey = bookingAddQueueName.toLowerCase().contains(operation.toLowerCase())
-                                ? bookingAddQueueName
-                                :
-                                    (bookingEditQueueName.toLowerCase().contains(operation.toLowerCase())
-                                            ? bookingEditQueueName
-                                            :
-                                                (bookingDeleteQueueName.toLowerCase().contains(operation.toLowerCase())
-                                                ? bookingDeleteQueueName : ""
-                                                )
-                                    );
+
+        List<String> list = Arrays.asList(bookingAddQueueName, bookingEditQueueName, bookingDeleteQueueName);
+
+        Optional<String> routingKey = list.stream()
+                .filter(s->s.toLowerCase().contains(operation.toLowerCase()))
+                .findFirst();
 
         if (routingKey.isEmpty()) throw new BookingProducerException();
-        return routingKey;
+
+        return routingKey.get();
     }
+
 
 }
