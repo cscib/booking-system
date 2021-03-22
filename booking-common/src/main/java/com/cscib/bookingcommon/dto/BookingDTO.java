@@ -19,12 +19,14 @@ public class BookingDTO {
 
     private String passengerContactNumber;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSSSSSx")
+    //2016-12-18@07:53:34.740+0000
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
     private OffsetDateTime pickupTime;
 
     private boolean asap;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSSSSSx")
+    //2016-12-18@07:53:34.740+0000
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
     private OffsetDateTime waitingTime;
 
     private int numberOfPassengers;
@@ -33,11 +35,12 @@ public class BookingDTO {
 
     private int rating;
 
-    //2011-03-22T09:06:35.561+01:00
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSSSSSx")
+    //2016-12-18@07:53:34.740+0000
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
     private OffsetDateTime createdOn;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSSSSSx")
+    //2016-12-18@07:53:34.740+0000
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
     private OffsetDateTime lastModifiedOn;
 
     private List<TripWaypointDTO> tripWaypoints;

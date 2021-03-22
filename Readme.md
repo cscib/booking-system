@@ -24,6 +24,8 @@ sudo docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_V
 
 mvn build install
 
+3. Run first the producer (booking-producer-service) and then the consumer jar file (booking-consumer-service)
+
 
 ## Additional Checks
 -----------------
@@ -41,4 +43,4 @@ docker ps -a
 
 
  Example of the Payload for create and update:
- {"id":"Booking1","passengerName":"John Grisham","passengerContactNumber":"+044 12345678","pickupTime":"","asap":true,"waitingTime":null,"numberOfPassengers":2,"price":10,"rating":0,"createdOn":"","lastModifiedOn":"","tripWaypoints":[{"id":0,"locality":null,"latitude":0.0,"longitude":0.0},{"id":0,"locality":null,"latitude":0.0,"longitude":0.0}]}
+ {"id":"Booking1","passengerName":"John Grisham","passengerContactNumber":"+044 12345678","pickupTime":"2016-12-18@07:53:34.740+0000","asap":true,"waitingTime":null,"numberOfPassengers":2,"price":10,"rating":0,"createdOn":"2016-12-18@07:53:34.740+0000","lastModifiedOn":"2016-12-18@07:53:34.740+0000","tripWaypoints":[{"id":tripWaypoint1,"locality":null,"latitude":0.0,"longitude":0.0},{"id":tripWaypoint2,"locality":null,"latitude":0.0,"longitude":0.0}]}
