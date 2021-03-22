@@ -18,13 +18,15 @@ In a real life product more checks should be made.
 
 1. Create the RabbitMQ Image and start docker
 
-sudo docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_VHOST=/ -p 15672:15672 -p 5672:5672 -p 15674:15674 myrabbitmqimage:v1
+sudo docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_VHOST=/ -p 15672:15672 -p 5672:5672 -p 15674:15674 rabbitmq:3-management
 
 2. First build the project  to generate a Fat Jar
 
 mvn build install
 
-3. Run first the producer (booking-producer-service) and then the consumer jar file (booking-consumer-service)
+3. Run first the producer (booking-producer-service) and send an ADD request because of lazy initialization.
+
+4. Run the consumer jar file (booking-consumer-service)
 
 
 ## Additional Checks
@@ -32,6 +34,10 @@ mvn build install
 1. To check if Rabbit instance is running
 
 docker ps -a
+
+2. The exchange / queue binding can be seen in the jpg image in the root of the project.
+
+3.
 
 ## Booking API
 
@@ -43,4 +49,4 @@ docker ps -a
 
 
  Example of the Payload for create and update:
- {"id":"Booking1","passengerName":"John Grisham","passengerContactNumber":"+044 12345678","pickupTime":"2016-12-18@07:53:34.740+0000","asap":true,"waitingTime":null,"numberOfPassengers":2,"price":10,"rating":0,"createdOn":"2016-12-18@07:53:34.740+0000","lastModifiedOn":"2016-12-18@07:53:34.740+0000","tripWaypoints":[{"id":tripWaypoint1,"locality":null,"latitude":0.0,"longitude":0.0},{"id":tripWaypoint2,"locality":null,"latitude":0.0,"longitude":0.0}]}
+ {"id":"Booking1","passengerName":"John Grisham","passengerContactNumber":"+044 12345678","pickupTime":"2016-12-18@07:53:34.740+0000","asap":true,"waitingTime":null,"numberOfPassengers":2,"price":10,"rating":0,"createdOn":"2016-12-18@07:53:34.740+0000","lastModifiedOn":"2016-12-18@07:53:34.740+0000","tripWaypoints":[{"id":"tripWaypoint1","locality":null,"latitude":0.0,"longitude":0.0},{"id":"tripWaypoint2","locality":null,"latitude":0.0,"longitude":0.0}]}
